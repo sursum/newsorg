@@ -17,6 +17,9 @@ home/static/images/
 /blog/migrations/
 /media
 /search
+blog/templates/blog/blog_page.1.html
+home/static/home/css/home.1.css
+home/templates/home/partials/category_news.1.html
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
