@@ -14,11 +14,12 @@ class BubblaSpider(scrapy.Spider):
         #     yield {
         #         'text': quote.css('a.nodes::text').extract_first(),                
         #     }
-        print(pathtst)
+        
         for sel in response.xpath(pathtst):
+            
             item = BucscraperItem()
-            item['text'] =  sel.xpath('.//*/a[@class="nodes"]/text()').extract()
-            item['link'] =  sel.xpath('.//*/a[@class="nodes"]/@href').extract()
+            item['text'] =  sel.xpath('.//*/a[@class="nodes"]/text()').extract_first()
+            item['link'] =  sel.xpath('.//*/a[@class="nodes"]/@href').extract_first()
             
             yield item
             # yield {

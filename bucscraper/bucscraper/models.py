@@ -1,4 +1,4 @@
-from sqlalchemy import create_engine, Column, Table, ForeignKey
+from sqlalchemy import create_engine, Column, Table, ForeignKey,  DateTime, String, Integer,func
 from sqlalchemy.dialects import postgresql
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy import (
@@ -22,6 +22,7 @@ class BucscraperDB(DeclarativeBase):
     __tablename__ = "article_table"
 
     id = Column(Integer, primary_key=True)
+    date = Column('date', DateTime(timezone=True), server_default=func.now())
     text = Column('text', Text())
-    link = Column('link', String(1000))
+    link = Column('link', String)
     
