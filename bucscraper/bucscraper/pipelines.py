@@ -11,6 +11,7 @@ from slugify import slugify
 from django.core.exceptions import ValidationError
 
 from wagtail.wagtailcore import blocks
+from wagtail.wagtailcore.rich_text import RichText
 from wagtail.wagtailcore.fields import StreamField
 from wagtail.wagtailcore.models import Page
 
@@ -44,16 +45,23 @@ class BucscraperPipeline(object):
         blogpage = BlogPage()
         blogpage.tags.add('minitrue')
         blogpage.body = [            
-            ('paragraph', blocks.RichTextBlock(item["text"])),        
+            ('paragraph', RichText(item["text"])),        
             # ('image', ImageChooserBlock()),
-            ('articleIP', blocks.URLBlock(item["link"])),
+            #('articleIP', blocks.URLBlock(item["link"])),
+            ('articleIP', json.dumps(item["link"]).strip("\"")),
         ]
         try:
             text_index.add_child(instance=BlogPage(title=blogtitle, 
                                     slug=slug_path, 
                                     intro = truncate_string(item["text"],25),
-                                    body = blogpage.body,        
+                                    body = blogpage.body,  
+                                    tags = blogpage.tags,      
             ))
+        # try:
+        #     text_index.add_child(instance=BlogPage(title=blogtitle, 
+        #                             slug=slug_path, 
+        #                             intro = truncate_string(item["text"],25),
+        #                             body = blogpage.body))
         except ValidationError as err:
             print(str(err) )
 
