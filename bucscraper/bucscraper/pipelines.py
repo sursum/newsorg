@@ -8,6 +8,8 @@ import json
 from sqlalchemy.orm import sessionmaker
 from slugify import slugify
 
+from django.core.exceptions import ValidationError
+
 from wagtail.wagtailcore import blocks
 from wagtail.wagtailcore.fields import StreamField
 from wagtail.wagtailcore.models import Page
@@ -41,58 +43,17 @@ class BucscraperPipeline(object):
         blogtitle = truncate_string(item["text"],8)
         blogpage = BlogPage()
         blogpage.body = [            
-            # ('paragraph', blocks.RichTextBlock()),        
+            ('paragraph', blocks.RichTextBlock(item["text"])),        
             # ('image', ImageChooserBlock()),
             ('articleIP', blocks.URLBlock(item["link"])),
         ]
-        
-        # blogbody = StreamField([
-        #     ('heading', blogtitle),
-        #     ('paragraph', blocks.RichTextBlock(item["text"])),                    
-        #     ('articleIP', item["link"]),
-        #])    
-        print("LINK: " + item["link"])
-        
-        text_index.add_child(instance=BlogPage(title=blogtitle, 
+        try:
+            text_index.add_child(instance=BlogPage(title=blogtitle, 
                                     slug=slug_path, 
                                     intro = truncate_string(item["text"],25),
-                                    body = blogpage.body
-                                    # body = [            
-                                    #     ('articleIP', item["link"]),
-                                    # ]
-        ))
+                                    body = blogpage.body        
+            ))
+        except ValidationError as err:
+            print(str(err) )
 
-        #blogpage.save()
-        #session = self.Session()   
-        # try:
-        #     session.add(blogpage)
-        #     session.commit()
-        # except:
-        #     session.rollback()
-        #     raise
-        # finally:
-        #     session.close()
-
-        # return item
-
-
-    # def process_item(self, item, spider):
-        # """Save deals in the database.
-
-        # This method is called for every item pipeline component.
-        # """
-        # session = self.Session()
-        # scraperdb = BucscraperDB()
-        # scraperdb.text = item["text"]
-        # scraperdb.link = item["link"]
-
-        # try:
-        #     session.add(scraperdb)
-        #     session.commit()
-        # except:
-        #     session.rollback()
-        #     raise
-        # finally:
-        #     session.close()
-
-        # return item
+        return item

@@ -1,7 +1,9 @@
 .gitignore
 # Project files and directories
-bucscraper/
-/bucscraper/
+#bucscraper/
+#/bucscraper/
+/bucscraper/bubbla.json
+bucscraper/bubbla.json
 /newsorg/local_settings.py
 newsorg/static/newsorg/images/
 /newsorg/tmp/
