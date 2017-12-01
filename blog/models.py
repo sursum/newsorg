@@ -16,6 +16,7 @@ from wagtail.wagtailimages.blocks import ImageChooserBlock
 from wagtail.wagtailsearch import index
 from wagtail.wagtailsnippets.models import register_snippet
 
+
 # Create a Profile class
 class PersonBlock(blocks.StructBlock):
     first_name = blocks.CharBlock()

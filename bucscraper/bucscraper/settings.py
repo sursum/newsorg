@@ -10,7 +10,7 @@ os.environ['DJANGO_SETTINGS_MODULE'] = 'newsorg.settings.base'
 # This is required only if Django Version > 1.8
 import django
 django.setup()
-
+ 
 # DJANGO INTEGRATION
 # 
 # # -*- coding: utf-8 -*-

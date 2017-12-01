@@ -132,7 +132,7 @@ STATICFILES_FINDERS = [
 STATICFILES_DIRS = [
     os.path.join(PROJECT_DIR, 'static'),
 ]
-
+ 
 STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 STATIC_URL = '/static/'
 
@@ -142,7 +142,7 @@ MEDIA_URL = '/media/'
 
 # Wagtail settings
 WAGTAIL_SITE_NAME = "newsorg"
-
+ 
 # Base URL to use when referring to full URLs within the Wagtail admin backend -
 # e.g. in notification emails. Don't include '/admin' or a trailing slash
 BASE_URL = 'http://example.com'

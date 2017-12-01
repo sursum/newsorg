@@ -1,5 +1,6 @@
 .gitignore
 # Project files and directories
+bucscraper/
 /bucscraper/
 /newsorg/local_settings.py
 newsorg/static/newsorg/images/
