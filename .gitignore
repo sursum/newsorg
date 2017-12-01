@@ -1,11 +1,25 @@
-# .gitignore
+.gitignore
 # Project files and directories
-# /bucscraper/
-/newsorg/
-/home/
-/blog/
+/bucscraper/
+/newsorg/local_settings.py
+newsorg/static/newsorg/images/
+/newsorg/tmp/
+/newsorg/media/
+/home/local_settings.py
+home/static/images/
+/home/tmp/
+/home/media/
+/home/migrations/
+/blog/local_settings.py
+/blog/static/
+/blog/tmp/
+/blog/media/
+/blog/migrations/
 /media
 /search
+blog/templates/blog/blog_page.1.html
+home/static/home/css/home.1.css
+home/templates/home/partials/category_news.1.html
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
