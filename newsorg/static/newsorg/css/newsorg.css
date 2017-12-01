@@ -86,7 +86,8 @@ p, .navbar li a {
 /* Change the link color to #111 (black) on hover */
 .blogpage-categories li a:hover,
 .main-menu li a:hover,
-a:hover.menu-pp-text  {
+a:hover.menu-pp-text,
+a:hover.block-articleIP  {
   color: orange;
   background-color: #111;
 }
@@ -319,4 +320,8 @@ section.block-image > .rich-text {
   text-align: right;
   font-style: italic;
   font-size: small;
+}
+a.block-articleIP {
+  color: #4B3296;
+  font-size: large;
 }

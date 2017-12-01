@@ -50,6 +50,10 @@
                         <section class="block-{{ block.block_type }}">
                             {{ block.value |richtext }}
                         </section>
+                    {% elif block.block_type == 'articleIP' %}
+                        <section class="block-{{ block.block_type }}">
+                            <a href="{{ block.value }}" class="block-{{ block.block_type }}">Vill du veta mer?</a>
+                        </section>
                         {% else %}
                         <section class="block-{{ block.block_type }}">
                             {% include_block block %}

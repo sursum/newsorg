@@ -42,6 +42,7 @@ class BucscraperPipeline(object):
         slug_path = slugify(truncate_string(item["text"],5, ''))
         blogtitle = truncate_string(item["text"],8)
         blogpage = BlogPage()
+        blogpage.tags.add('minitrue')
         blogpage.body = [            
             ('paragraph', blocks.RichTextBlock(item["text"])),        
             # ('image', ImageChooserBlock()),
@@ -51,7 +52,7 @@ class BucscraperPipeline(object):
             text_index.add_child(instance=BlogPage(title=blogtitle, 
                                     slug=slug_path, 
                                     intro = truncate_string(item["text"],25),
-                                    body = blogpage.body        
+                                    body = blogpage.body,        
             ))
         except ValidationError as err:
             print(str(err) )
