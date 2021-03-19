@@ -12,7 +12,7 @@ Django==1.11.5
 django-modelcluster==3.1
 django-taggit==0.22.1
 django-treebeard==4.1.2
-djangorestframework==3.6.4
+djangorestframework==3.11.2
 elasticsearch==5.4.0
 html5lib==0.999999999
 hyperlink==17.3.1
